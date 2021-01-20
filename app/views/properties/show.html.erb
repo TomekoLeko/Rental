@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<div class="my-jumbotron">
+<p>
+  <strong>Address:</strong>
+  <%= @property.address %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @property.postcode %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @property.city %>
+</p>
+
+<p>
+  <strong>Rented:</strong>
+  <%= @property.rented %>
+</p>
+
+<%= link_to 'Edit', edit_property_path(@property), class:"btn btn-secondary" %>
+<%= link_to 'Back', properties_path, class:"btn btn-secondary btn-dark" %>
+</div>
+
