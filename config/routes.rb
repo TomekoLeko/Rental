@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tenants
   devise_for :users
   resources :properties
   # get 'home/index'
