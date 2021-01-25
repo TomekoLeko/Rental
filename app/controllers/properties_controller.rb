@@ -1,5 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /properties
   # GET /properties.json
@@ -14,7 +16,8 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @property = Property.new
+    # @property = Property.new
+    @property = current_user.properties.build
   end
 
   # GET /properties/1/edit
@@ -24,7 +27,8 @@ class PropertiesController < ApplicationController
   # POST /properties
   # POST /properties.json
   def create
-    @property = Property.new(property_params)
+    # @property = Property.new(property_params)
+    @property = current_user.properties.build(property_params)
 
     respond_to do |format|
       if @property.save
@@ -59,6 +63,11 @@ class PropertiesController < ApplicationController
       format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user 
+    @property = current_user.properties.find_by(id: params[:id])
+    redirect_to properties_path, notice: 'Not Authorized to edit this property' if @property.nil?
   end
 
   private
