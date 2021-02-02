@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @rent.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @rent.to %>
+</p>
+
+<p>
+  <strong>Paymant date:</strong>
+  <%= @rent.paymant_date %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @rent.rent %>
+</p>
+
+<p>
+  <strong>Deposit:</strong>
+  <%= @rent.deposit %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @rent.property_id %>
+</p>
+
+<p>
+  <strong>Tenant:</strong>
+  <%= @rent.tenant_id %>
+</p>
+
+<%= link_to 'Edit', edit_rent_path(@rent) %> |
+<%= link_to 'Back', rents_path %>
