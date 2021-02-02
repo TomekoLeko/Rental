@@ -1,5 +1,7 @@
 class TenantsController < ApplicationController
   before_action :set_tenant, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /tenants
   # GET /tenants.json
@@ -14,7 +16,8 @@ class TenantsController < ApplicationController
 
   # GET /tenants/new
   def new
-    @tenant = Tenant.new
+    # @tenant = Tenant.new
+    @tenant = current_user.tenants.build
   end
 
   # GET /tenants/1/edit
@@ -24,7 +27,9 @@ class TenantsController < ApplicationController
   # POST /tenants
   # POST /tenants.json
   def create
-    @tenant = Tenant.new(tenant_params)
+    # @tenant = Tenant.new(tenant_params)
+    @tenant = current_user.tenants.build(tenant_params)
+
 
     respond_to do |format|
       if @tenant.save
@@ -61,6 +66,11 @@ class TenantsController < ApplicationController
     end
   end
 
+  def correct_user 
+    @tenant = current_user.tenants.find_by(id: params[:id])
+    redirect_to properties_path, notice: 'Not Authorized to edit this property' if @tenant.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tenant
@@ -69,6 +79,6 @@ class TenantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tenant_params
-      params.require(:tenant).permit(:email, :name, :phone)
+      params.require(:tenant).permit(:email, :name, :phone, :user_id)
     end
 end
