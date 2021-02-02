@@ -16,6 +16,8 @@ class RentsController < ApplicationController
   # GET /rents/new
   def new
     @rent = Rent.new
+    @properties = current_user.properties
+    @tenants = current_user.tenants
   end
 
   # GET /rents/1/edit

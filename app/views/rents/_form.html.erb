@@ -11,39 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :from %>
-    <%= form.date_select :from %>
+    <%= form.date_select :from, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :to %>
-    <%= form.date_select :to %>
+    <%= form.date_select :to, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :paymant_date %>
-    <%= form.date_select :paymant_date %>
+    <%= form.date_select :paymant_date, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :rent %>
-    <%= form.text_field :rent %>
+    <%= form.text_field :rent, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :deposit %>
-    <%= form.text_field :deposit %>
+    <%= form.text_field :deposit, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :property_id %>
-    <%= form.number_field :property_id %>
+<%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }) %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :tenant_id %>
-    <%= form.number_field :tenant_id %>
+    <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] } ) %>
   </div>
 
   <div class="actions">
