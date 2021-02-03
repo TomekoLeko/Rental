@@ -18,19 +18,22 @@ class RentsController < ApplicationController
   # GET /rents/new
   def new
     @rent = Rent.new
-    @properties = current_user.properties
+    @properties = current_user.properties.where(rented: false)
     @tenants = current_user.tenants
   end
 
   # GET /rents/1/edit
   def edit
+    @properties = current_user.properties
+    @tenants = current_user.tenants
   end
 
   # POST /rents
   # POST /rents.json
   def create
     @rent = Rent.new(rent_params)
-
+    property = current_user.properties.find_by_id(@rent.property_id)
+    property.update_attribute(:rented, true)
     respond_to do |format|
       if @rent.save
         format.html { redirect_to @rent, notice: 'Rent was successfully created.' }
@@ -45,6 +48,8 @@ class RentsController < ApplicationController
   # PATCH/PUT /rents/1
   # PATCH/PUT /rents/1.json
   def update
+    property = current_user.properties.find_by_id(@rent.property_id)
+    property.update_attribute(:rented, true)
     respond_to do |format|
       if @rent.update(rent_params)
         format.html { redirect_to @rent, notice: 'Rent was successfully updated.' }
@@ -59,6 +64,8 @@ class RentsController < ApplicationController
   # DELETE /rents/1
   # DELETE /rents/1.json
   def destroy
+    property = current_user.properties.find_by_id(@rent.property_id)
+    property.update_attribute(:rented, false)
     @rent.destroy
     respond_to do |format|
       format.html { redirect_to rents_url, notice: 'Rent was successfully destroyed.' }

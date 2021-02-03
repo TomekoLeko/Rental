@@ -38,7 +38,11 @@
 
   <div class="field form-group">
     <%= form.label :property_id %>
-<%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }) %>
+    <% if @properties.empty? %>
+    -You don't have available properties
+    <% else %>
+  <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }) %>
+<% end %>
   </div>
 
   <div class="field form-group">
