@@ -6,6 +6,8 @@ class RentsController < ApplicationController
   # GET /rents.json
   def index
     @rents = Rent.all
+    @properties = current_user.properties
+    @tenants = current_user.tenants
   end
 
   # GET /rents/1

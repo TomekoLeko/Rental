@@ -5,13 +5,13 @@
 <table class="table table-striped table-bordered table-hover">
   <thead class="thead-dark">
     <tr>
+    <th>Property</th>
+    <th>Tenant</th>
       <th>From</th>
       <th>To</th>
       <th>Paymant date</th>
       <th>Rent</th>
       <th>Deposit</th>
-      <th>Property</th>
-      <th>Tenant</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,13 +19,13 @@
   <tbody>
     <% @rents.each do |rent| %>
       <tr>
+      <td><%= @properties.find_by_id(rent.property_id).address %></td>
+      <td><%= @tenants.find_by_id(rent.tenant_id).name %></td>
         <td><%= rent.from %></td>
         <td><%= rent.to %></td>
         <td><%= rent.paymant_date %></td>
         <td><%= rent.rent %></td>
         <td><%= rent.deposit %></td>
-        <td><%= rent.property_id %></td>
-        <td><%= rent.tenant_id %></td>
         <td><%= link_to 'Show', rent %></td>
         <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
         <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
