@@ -24,7 +24,7 @@ class RentsController < ApplicationController
 
   # GET /rents/1/edit
   def edit
-    @properties = current_user.properties
+    @properties = current_user.properties.where(rented: false)
     @tenants = current_user.tenants
   end
 
@@ -65,7 +65,7 @@ class RentsController < ApplicationController
   # DELETE /rents/1.json
   def destroy
     property = current_user.properties.find_by_id(@rent.property_id)
-    property.update_attribute(:rented, false)
+    property.update_attribute(:rented, false) if property
     @rent.destroy
     respond_to do |format|
       format.html { redirect_to rents_url, notice: 'Rent was successfully destroyed.' }
