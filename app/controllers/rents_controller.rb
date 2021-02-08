@@ -24,7 +24,7 @@ class RentsController < ApplicationController
 
   # GET /rents/1/edit
   def edit
-    @properties = current_user.properties.where(rented: false)
+    @properties = current_user.properties.where(id: @rent.property_id)
     @tenants = current_user.tenants
   end
 

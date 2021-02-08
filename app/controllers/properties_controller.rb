@@ -7,7 +7,8 @@ class PropertiesController < ApplicationController
   # GET /properties.json
   def index
     @properties = Property.all
-  end
+    end
+  
 
   # GET /properties/1
   # GET /properties/1.json
@@ -57,16 +58,20 @@ class PropertiesController < ApplicationController
   # DELETE /properties/1
   # DELETE /properties/1.json
   def destroy
+    if @property.rented
+      redirect_to properties_path, alert: 'Property is rented, you cannot delete it.'
+    else  
     @property.destroy
     respond_to do |format|
       format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
       format.json { head :no_content }
+    end  
     end
   end
 
   def correct_user 
     @property = current_user.properties.find_by(id: params[:id])
-    redirect_to properties_path, notice: 'Not Authorized to edit this property' if @property.nil?
+    redirect_to properties_path, alert: 'Not Authorized to edit this property' if @property.nil?
   end
 
   private
