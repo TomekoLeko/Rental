@@ -38,7 +38,7 @@
 <% if current_user.properties.where(rented: false).length > 0%>
 <%= link_to 'New Rent', new_rent_path, class:"btn btn-secondary" %>
    <% else %>
-   You don't have free properties.
+   You don't have any free properties.
 
    <% end %>
   
