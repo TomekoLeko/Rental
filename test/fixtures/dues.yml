@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_id: 1
+  rent_id: 1
+  property_id: 1
+  tenant_id: 1
+  period_from: 2021-02-10
+  period_to: 2021-02-10
+  amount: 1.5
+  paid_amount: 1.5
+  paid_at: 2021-02-10
+  payment_date: 2021-02-10
+
+two:
+  type_id: 1
+  rent_id: 1
+  property_id: 1
+  tenant_id: 1
+  period_from: 2021-02-10
+  period_to: 2021-02-10
+  amount: 1.5
+  paid_amount: 1.5
+  paid_at: 2021-02-10
+  payment_date: 2021-02-10

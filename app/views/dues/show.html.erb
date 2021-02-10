@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @due.type_id %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @due.rent_id %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @due.property_id %>
+</p>
+
+<p>
+  <strong>Tenant:</strong>
+  <%= @due.tenant_id %>
+</p>
+
+<p>
+  <strong>Period from:</strong>
+  <%= @due.period_from %>
+</p>
+
+<p>
+  <strong>Period to:</strong>
+  <%= @due.period_to %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @due.amount %>
+</p>
+
+<p>
+  <strong>Paid amount:</strong>
+  <%= @due.paid_amount %>
+</p>
+
+<p>
+  <strong>Paid at:</strong>
+  <%= @due.paid_at %>
+</p>
+
+<p>
+  <strong>Payment date:</strong>
+  <%= @due.payment_date %>
+</p>
+
+<%= link_to 'Edit', edit_due_path(@due) %> |
+<%= link_to 'Back', dues_path %>

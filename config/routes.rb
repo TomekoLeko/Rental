@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dues
   resources :rents
   resources :tenants
   devise_for :users

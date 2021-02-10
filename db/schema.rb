@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_140831) do
+ActiveRecord::Schema.define(version: 2021_02_10_112052) do
+
+  create_table "dues", force: :cascade do |t|
+    t.integer "type_id"
+    t.integer "rent_id"
+    t.integer "property_id"
+    t.integer "tenant_id"
+    t.date "period_from"
+    t.date "period_to"
+    t.float "amount"
+    t.float "paid_amount"
+    t.date "paid_at"
+    t.date "payment_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string "address"
