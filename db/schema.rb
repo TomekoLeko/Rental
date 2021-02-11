@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_153808) do
   end
 
   create_table "dues", force: :cascade do |t|
-    t.integer "type_id"
+    t.integer "due_type_id"
     t.integer "rent_id"
     t.integer "property_id"
     t.integer "tenant_id"

@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  type_id: 1
+  due_type_id: 1
   rent_id: 1
   property_id: 1
   tenant_id: 1
@@ -13,7 +13,7 @@ one:
   payment_date: 2021-02-10
 
 two:
-  type_id: 1
+  due_type_id: 1
   rent_id: 1
   property_id: 1
   tenant_id: 1

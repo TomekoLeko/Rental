@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :type_id %>
-    <%= form.number_field :type_id %>
+    <%= form.label :due_type_id %>
+    <!-- <%= form.number_field :type_id %> -->
+    <%= form.select( :due_type_id, @due_types.collect { |type| [type.name, type.id] }) %>
   </div>
 
   <div class="field">

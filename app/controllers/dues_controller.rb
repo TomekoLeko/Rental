@@ -15,6 +15,7 @@ class DuesController < ApplicationController
   # GET /dues/new
   def new
     @due = Due.new
+    @due_types = DueType.all
   end
 
   # GET /dues/1/edit
@@ -25,6 +26,7 @@ class DuesController < ApplicationController
   # POST /dues.json
   def create
     @due = Due.new(due_params)
+
 
     respond_to do |format|
       if @due.save
@@ -69,6 +71,6 @@ class DuesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def due_params
-      params.require(:due).permit(:type_id, :rent_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_at, :payment_date)
+      params.require(:due).permit(:due_type_id, :rent_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_at, :payment_date)
     end
 end

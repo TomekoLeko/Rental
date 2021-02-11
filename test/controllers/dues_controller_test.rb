@@ -17,7 +17,7 @@ class DuesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create due" do
     assert_difference('Due.count') do
-      post dues_url, params: { due: { amount: @due.amount, paid_amount: @due.paid_amount, paid_at: @due.paid_at, payment_date: @due.payment_date, period_from: @due.period_from, period_to: @due.period_to, property_id: @due.property_id, rent_id: @due.rent_id, tenant_id: @due.tenant_id, type_id: @due.type_id } }
+      post dues_url, params: { due: { amount: @due.amount, paid_amount: @due.paid_amount, paid_at: @due.paid_at, payment_date: @due.payment_date, period_from: @due.period_from, period_to: @due.period_to, property_id: @due.property_id, rent_id: @due.rent_id, tenant_id: @due.tenant_id, due_type_id: @due.due_type_id } }
     end
 
     assert_redirected_to due_url(Due.last)
@@ -34,7 +34,7 @@ class DuesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update due" do
-    patch due_url(@due), params: { due: { amount: @due.amount, paid_amount: @due.paid_amount, paid_at: @due.paid_at, payment_date: @due.payment_date, period_from: @due.period_from, period_to: @due.period_to, property_id: @due.property_id, rent_id: @due.rent_id, tenant_id: @due.tenant_id, type_id: @due.type_id } }
+    patch due_url(@due), params: { due: { amount: @due.amount, paid_amount: @due.paid_amount, paid_at: @due.paid_at, payment_date: @due.payment_date, period_from: @due.period_from, period_to: @due.period_to, property_id: @due.property_id, rent_id: @due.rent_id, tenant_id: @due.tenant_id, due_type_id: @due.type_id } }
     assert_redirected_to due_url(@due)
   end
 
