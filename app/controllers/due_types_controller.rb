@@ -1,5 +1,7 @@
 class DueTypesController < ApplicationController
   before_action :set_due_type, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /due_types
   # GET /due_types.json
@@ -14,7 +16,7 @@ class DueTypesController < ApplicationController
 
   # GET /due_types/new
   def new
-    @due_type = DueType.new
+    @due_type = current_user.due_types.build
   end
 
   # GET /due_types/1/edit
@@ -24,7 +26,8 @@ class DueTypesController < ApplicationController
   # POST /due_types
   # POST /due_types.json
   def create
-    @due_type = DueType.new(due_type_params)
+    # @due_type = DueType.new(due_type_params)
+    @due_type = current_user.due_types.build(due_type_params)
 
     respond_to do |format|
       if @due_type.save
@@ -61,6 +64,11 @@ class DueTypesController < ApplicationController
     end
   end
 
+  def correct_user 
+    @due_type = current_user.due_types.find_by(id: params[:id])
+    redirect_to due_types_path, alert: 'Not Authorized to edit this type' if @due_type.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_due_type
@@ -69,6 +77,6 @@ class DueTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def due_type_params
-      params.require(:due_type).permit(:name)
+      params.require(:due_type).permit(:name, :user_id)
     end
 end

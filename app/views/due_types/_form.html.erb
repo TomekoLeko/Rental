@@ -15,6 +15,11 @@
     <%= form.label :name %>
     <%= form.text_field :name, class:"form-control" %>
   </div>
+  <div class="field form-group"">
+  <%= form.label :user_id %>
+  <%= form.number_field :user_id, id: :due_type_user_id, value: current_user.id, class:"form-control", type: :hidden %>
+</br>
+</div>
 </br>
   <div class="actions form-group">
     <%= form.submit class:"btn btn-success" %>
