@@ -17,7 +17,7 @@ class RentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create rent" do
     assert_difference('Rent.count') do
-      post rents_url, params: { rent: { deposit: @rent.deposit, from: @rent.from, paymant_date: @rent.paymant_date, property_id: @rent.property_id, rent: @rent.rent, tenant_id: @rent.tenant_id, to: @rent.to } }
+      post rents_url, params: { rent: { deposit: @rent.deposit, from: @rent.from, payment_date: @rent.payment_date, property_id: @rent.property_id, rent: @rent.rent, tenant_id: @rent.tenant_id, to: @rent.to } }
     end
 
     assert_redirected_to rent_url(Rent.last)
@@ -34,7 +34,7 @@ class RentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update rent" do
-    patch rent_url(@rent), params: { rent: { deposit: @rent.deposit, from: @rent.from, paymant_date: @rent.paymant_date, property_id: @rent.property_id, rent: @rent.rent, tenant_id: @rent.tenant_id, to: @rent.to } }
+    patch rent_url(@rent), params: { rent: { deposit: @rent.deposit, from: @rent.from, payment_date: @rent.payment_date, property_id: @rent.property_id, rent: @rent.rent, tenant_id: @rent.tenant_id, to: @rent.to } }
     assert_redirected_to rent_url(@rent)
   end
 

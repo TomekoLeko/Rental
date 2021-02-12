@@ -16,7 +16,7 @@ class RentsTest < ApplicationSystemTestCase
 
     fill_in "Deposit", with: @rent.deposit
     fill_in "From", with: @rent.from
-    fill_in "Paymant date", with: @rent.paymant_date
+    fill_in "Payment date", with: @rent.payment_date
     fill_in "Property", with: @rent.property_id
     fill_in "Rent", with: @rent.rent
     fill_in "Tenant", with: @rent.tenant_id
@@ -33,7 +33,7 @@ class RentsTest < ApplicationSystemTestCase
 
     fill_in "Deposit", with: @rent.deposit
     fill_in "From", with: @rent.from
-    fill_in "Paymant date", with: @rent.paymant_date
+    fill_in "Payment date", with: @rent.payment_date
     fill_in "Property", with: @rent.property_id
     fill_in "Rent", with: @rent.rent
     fill_in "Tenant", with: @rent.tenant_id

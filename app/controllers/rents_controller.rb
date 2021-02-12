@@ -87,6 +87,6 @@ class RentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rent_params
-      params.require(:rent).permit(:from, :to, :paymant_date, :rent, :deposit, :property_id, :tenant_id)
+      params.require(:rent).permit(:from, :to, :payment_date, :rent, :deposit, :property_id, :tenant_id)
     end
 end

@@ -3,7 +3,7 @@
 one:
   from: 2021-02-02
   to: 2021-02-02
-  paymant_date: 2021-02-02
+  payment_date: 2021-02-02
   rent: 1.5
   deposit: 1.5
   property_id: 1
@@ -12,7 +12,7 @@ one:
 two:
   from: 2021-02-02
   to: 2021-02-02
-  paymant_date: 2021-02-02
+  payment_date: 2021-02-02
   rent: 1.5
   deposit: 1.5
   property_id: 1

@@ -3,7 +3,7 @@ class CreateRents < ActiveRecord::Migration[6.0]
     create_table :rents do |t|
       t.date :from
       t.date :to
-      t.date :paymant_date
+      t.date :payment_date
       t.float :rent
       t.float :deposit
       t.integer :property_id

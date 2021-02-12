@@ -9,7 +9,7 @@
     <th>Tenant</th>
       <th>From</th>
       <th>To</th>
-      <th>Paymant date</th>
+      <th>Payment date</th>
       <th>Rent</th>
       <th>Deposit</th>
       <th colspan="3"></th>
@@ -23,7 +23,7 @@
       <td><%= @tenants.find_by_id(rent.tenant_id).name %></td>
         <td><%= rent.from %></td>
         <td><%= rent.to %></td>
-        <td><%= rent.paymant_date %></td>
+        <td><%= rent.payment_date %></td>
         <td><%= rent.rent %></td>
         <td><%= rent.deposit %></td>
         <td><%= link_to 'Show', rent %></td>

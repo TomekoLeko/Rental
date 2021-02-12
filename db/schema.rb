@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_153808) do
   create_table "rents", force: :cascade do |t|
     t.date "from"
     t.date "to"
-    t.date "paymant_date"
+    t.date "payment_date"
     t.float "rent"
     t.float "deposit"
     t.integer "property_id"
