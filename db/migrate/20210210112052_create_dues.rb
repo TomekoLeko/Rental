@@ -11,6 +11,7 @@ class CreateDues < ActiveRecord::Migration[6.0]
       t.float :paid_amount
       t.date :paid_at
       t.date :payment_date
+      t.integer :user_id, index: true
 
       t.timestamps
     end
