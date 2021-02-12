@@ -2,8 +2,8 @@
 
 <h1>Due Types</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
     <tr>
       <th>Name</th>
       <th colspan="3"></th>
@@ -14,9 +14,11 @@
     <% @due_types.each do |due_type| %>
       <tr>
         <td><%= due_type.name %></td>
-        <td><%= link_to 'Show', due_type %></td>
-        <td><%= link_to 'Edit', edit_due_type_path(due_type) %></td>
-        <td><%= link_to 'Destroy', due_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+        <!-- <td><%= link_to 'Edit', edit_due_type_path(due_type) %></td> -->
+        <td><%= link_to 'Delete', due_type, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %>
+        
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Due Type', new_due_type_path %>
+<%= link_to 'New Due Type', new_due_type_path, class:"btn btn-secondary" %>
