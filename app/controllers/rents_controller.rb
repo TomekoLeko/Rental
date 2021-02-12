@@ -74,7 +74,7 @@ class RentsController < ApplicationController
     tenant.update_attribute(:resident, false) if tenant
     @rent.destroy
     respond_to do |format|
-      format.html { redirect_to rents_url, notice: 'Rent was successfully destroyed.' }
+      format.html { redirect_to rents_url, notice: 'Rent was successfully deleted.' }
       format.json { head :no_content }
     end
   end

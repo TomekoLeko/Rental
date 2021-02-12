@@ -56,6 +56,6 @@ class DuesTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Due was successfully destroyed"
+    assert_text "Due was successfully deleted"
   end
 end

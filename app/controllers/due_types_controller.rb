@@ -56,7 +56,7 @@ class DueTypesController < ApplicationController
   def destroy
     @due_type.destroy
     respond_to do |format|
-      format.html { redirect_to due_types_url, notice: 'Due type was successfully destroyed.' }
+      format.html { redirect_to due_types_url, notice: 'Due type was successfully deleted.' }
       format.json { head :no_content }
     end
   end

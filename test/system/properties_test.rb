@@ -44,6 +44,6 @@ class PropertiesTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Property was successfully destroyed"
+    assert_text "Property was successfully deleted"
   end
 end

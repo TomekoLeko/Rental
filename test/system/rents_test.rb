@@ -50,6 +50,6 @@ class RentsTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Rent was successfully destroyed"
+    assert_text "Rent was successfully deleted"
   end
 end

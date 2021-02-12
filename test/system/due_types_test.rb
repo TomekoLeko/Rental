@@ -38,6 +38,6 @@ class DueTypesTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Due type was successfully destroyed"
+    assert_text "Due type was successfully deleted"
   end
 end
