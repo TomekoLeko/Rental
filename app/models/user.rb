@@ -8,4 +8,5 @@ class User < ApplicationRecord
          has_many :tenants
          has_many :rents
          has_many :due_types
+         has_many :dues
 end

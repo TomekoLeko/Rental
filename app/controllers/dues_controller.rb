@@ -1,10 +1,13 @@
 class DuesController < ApplicationController
   before_action :set_due, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /dues
   # GET /dues.json
   def index
     @dues = Due.all
+
   end
 
   # GET /dues/1
@@ -14,7 +17,8 @@ class DuesController < ApplicationController
 
   # GET /dues/new
   def new
-    @due = Due.new
+
+    @due = current_user.dues.build
     @due_types = DueType.all
   end
 
@@ -25,7 +29,7 @@ class DuesController < ApplicationController
   # POST /dues
   # POST /dues.json
   def create
-    @due = Due.new(due_params)
+    @due = current_user.dues.build(due_params)
 
 
     respond_to do |format|
@@ -63,6 +67,11 @@ class DuesController < ApplicationController
     end
   end
 
+  def correct_user 
+    @due = current_user.dues.find_by(id: params[:id])
+    redirect_to dues_path, alert: 'Not Authorized to edit this type' if @due.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_due
@@ -71,6 +80,6 @@ class DuesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def due_params
-      params.require(:due).permit(:due_type_id, :rent_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_at, :payment_date)
+      params.require(:due).permit(:due_type_id, :rent_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_at, :payment_date, :user_id)
     end
 end
