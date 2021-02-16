@@ -1,6 +1,7 @@
 class RentsController < ApplicationController
   before_action :set_rent, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /rents
   # GET /rents.json
@@ -17,7 +18,7 @@ class RentsController < ApplicationController
 
   # GET /rents/new
   def new
-    @rent = Rent.new
+    @rent = current_user.rents.build
     @properties = current_user.properties.where(rented: false)
     @tenants = current_user.tenants.where(resident: false)
   end
@@ -32,6 +33,7 @@ class RentsController < ApplicationController
   # POST /rents.json
   def create
     @rent = Rent.new(rent_params)
+    @rent = current_user.rents.build(rent_params)
     property = current_user.properties.find_by_id(@rent.property_id)
     tenant = current_user.tenants.find_by_id(@rent.tenant_id)
     property.update_attribute(:rented, true)
@@ -79,6 +81,11 @@ class RentsController < ApplicationController
     end
   end
 
+  def correct_user 
+    @rent = current_user.rents.find_by(id: params[:id])
+    redirect_to rents_path, alert: 'Not Authorized to edit this type' if @rent.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rent
@@ -87,6 +94,6 @@ class RentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rent_params
-      params.require(:rent).permit(:from, :to, :payment_date, :rent, :deposit, :property_id, :tenant_id)
+      params.require(:rent).permit(:from, :to, :payment_date, :rent, :deposit, :property_id, :tenant_id, :user_id)
     end
 end

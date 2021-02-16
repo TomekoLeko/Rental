@@ -56,6 +56,11 @@
 <% end %>
   </div>
 
+  <div class="field form-group"">
+  <%= form.number_field :user_id, id: :rent_user_id, value: current_user.id, class:"form-control", type: :hidden %>
+</br>
+</div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

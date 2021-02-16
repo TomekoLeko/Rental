@@ -8,10 +8,12 @@ class CreateRents < ActiveRecord::Migration[6.0]
       t.float :deposit
       t.integer :property_id
       t.integer :tenant_id
+      t.integer :user_id
 
       t.timestamps
     end
     add_index :rents, :property_id
     add_index :rents, :tenant_id
+    add_index :rents, :user_id
   end
 end

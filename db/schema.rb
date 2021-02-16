@@ -56,10 +56,12 @@ ActiveRecord::Schema.define(version: 2021_02_11_153808) do
     t.float "deposit"
     t.integer "property_id"
     t.integer "tenant_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_id"], name: "index_rents_on_property_id"
     t.index ["tenant_id"], name: "index_rents_on_tenant_id"
+    t.index ["user_id"], name: "index_rents_on_user_id"
   end
 
   create_table "tenants", force: :cascade do |t|

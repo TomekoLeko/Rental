@@ -9,4 +9,5 @@ class User < ApplicationRecord
          has_many :rents
          has_many :due_types
          has_many :dues
+         has_many :rents
 end

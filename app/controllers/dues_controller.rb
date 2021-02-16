@@ -17,7 +17,6 @@ class DuesController < ApplicationController
 
   # GET /dues/new
   def new
-
     @due = current_user.dues.build
     @due_types = DueType.all
   end

@@ -18,6 +18,7 @@
 
   <tbody>
     <% @rents.each do |rent| %>
+      <% if rent.user_id == current_user.id %>
       <tr>
       <td><%= @properties.find_by_id(rent.property_id).address %></td>
       <td><%= @tenants.find_by_id(rent.tenant_id).name %></td>
@@ -30,6 +31,7 @@
         <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
         <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
