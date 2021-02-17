@@ -57,10 +57,14 @@ class DueTypesController < ApplicationController
   # DELETE /due_types/1
   # DELETE /due_types/1.json
   def destroy
+    if  current_user.dues.find_by(due_type_id: @due_type.id)
+      redirect_to due_types_path, alert: 'You cannot delete. This type is in use.'
+    else  
     @due_type.destroy
     respond_to do |format|
       format.html { redirect_to due_types_url, notice: 'Due type was successfully deleted.' }
       format.json { head :no_content }
+    end  
     end
   end
 
