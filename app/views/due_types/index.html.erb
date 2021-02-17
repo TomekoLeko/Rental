@@ -12,6 +12,7 @@
 
   <tbody>
     <% @due_types.each do |due_type| %>
+      <% if due_type.user_id == current_user.id %>
       <tr>
         <td><%= due_type.name %></td>
       
@@ -20,6 +21,7 @@
         
         </td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
