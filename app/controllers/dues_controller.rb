@@ -7,6 +7,7 @@ class DuesController < ApplicationController
   # GET /dues.json
   def index
     @dues = Due.all
+    @due_types = current_user.due_types
 
   end
 

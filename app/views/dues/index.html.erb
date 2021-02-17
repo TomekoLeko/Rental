@@ -24,7 +24,7 @@
     <% @dues.each do |due| %>
       <% if due.user_id == current_user.id %>
       <tr>
-        <td><%= due.due_type_id %></td>
+        <td><%= @due_types.find_by_id(due.due_type_id).name %></td>
         <td><%= due.rent_id %></td>
         <td><%= due.property_id %></td>
         <td><%= due.tenant_id %></td>
@@ -37,7 +37,7 @@
         <td><%= due.user_id %></td>
         <td><%= link_to 'Show', due %></td>
         <td><%= link_to 'Edit', edit_due_path(due) %></td>
-        <td><%= link_to 'Destroy', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
     <% end %>
