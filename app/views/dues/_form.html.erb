@@ -11,43 +11,49 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :due_type_id %>
     <!-- <%= form.number_field :type_id %> -->
     <%= form.select( :due_type_id, @due_types.collect { |type| [type.name, type.id] }) %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :rent_id %>
     <%= form.number_field :rent_id %>
-  </div>
+  </div> -->
 
-  <div class="field">
+ <% if params[:payer]== 'property' %>
+  <div class="field form-group">
     <%= form.label :property_id %>
-    <%= form.number_field :property_id %>
+    <!-- <%= form.number_field :property_id %> -->
+    <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }) %>
   </div>
+ <% end %> 
 
-  <div class="field">
+
+
+ <% if params[:payer]== 'tenant' %>
+  <div class="field form-group">
     <%= form.label :tenant_id %>
     <%= form.number_field :tenant_id %>
   </div>
-
-  <div class="field">
+  <% end %> 
+  <div class="field form-group">
     <%= form.label :period_from %>
     <%= form.date_select :period_from %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :period_to %>
     <%= form.date_select :period_to %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :amount %>
-    <%= form.text_field :amount %>
+    <%= form.text_field :amount, :required => 'required' %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :paid_amount %>
     <%= form.text_field :paid_amount %>
   </div>
@@ -55,20 +61,19 @@
   <div class="field">
     <%= form.label :paid_at %>
     <%= form.date_select :paid_at %>
-  </div>
+  </div> -->
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :payment_date %>
     <%= form.date_select :payment_date %>
   </div>
 
   <div class="field form-group"">
-  <%= form.label :user_id %>
   <%= form.number_field :user_id, id: :due_user_id, value: current_user.id, class:"form-control", type: :hidden %>
 </br>
 </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success" %>
   </div>
 <% end %>

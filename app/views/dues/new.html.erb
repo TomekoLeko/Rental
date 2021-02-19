@@ -1,5 +1,8 @@
-<h1>New Due</h1>
+<h1>New Due
+<% if params[:payer]== 'property' %> to pay <% end %>
+<% if params[:payer]== 'tenant' %>to collect  <% end %>
+</h1>
 
 <%= render 'form', due: @due %>
-
-<%= link_to 'Back', dues_path %>
+<br>
+<%= link_to 'Cancel', dues_path, class:"btn btn-secondary" %>

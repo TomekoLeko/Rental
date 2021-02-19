@@ -20,18 +20,20 @@ class DuesController < ApplicationController
   def new
     @due = current_user.dues.build
     @due_types = DueType.all
+    @properties = current_user.properties
+    @tenants = current_user.tenants
   end
 
   # GET /dues/1/edit
   def edit
+    @properties = current_user.properties
+    @tenants = current_user.tenants
   end
 
   # POST /dues
   # POST /dues.json
   def create
     @due = current_user.dues.build(due_params)
-
-
     respond_to do |format|
       if @due.save
         format.html { redirect_to @due, notice: 'Due was successfully created.' }
