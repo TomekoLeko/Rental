@@ -87,6 +87,6 @@ class DuesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def due_params
-      params.require(:due).permit(:due_type_id, :rent_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_at, :payment_date, :user_id)
+      params.require(:due).permit(:due_type_id, :rent_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_on, :payment_date, :user_id)
     end
 end

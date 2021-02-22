@@ -16,7 +16,7 @@ class DuesTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @due.amount
     fill_in "Paid amount", with: @due.paid_amount
-    fill_in "Paid at", with: @due.paid_at
+    fill_in "Paid on", with: @due.paid_on
     fill_in "Payment date", with: @due.payment_date
     fill_in "Period from", with: @due.period_from
     fill_in "Period to", with: @due.period_to
@@ -36,7 +36,7 @@ class DuesTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @due.amount
     fill_in "Paid amount", with: @due.paid_amount
-    fill_in "Paid at", with: @due.paid_at
+    fill_in "Paid on", with: @due.paid_on
     fill_in "Payment date", with: @due.payment_date
     fill_in "Period from", with: @due.period_from
     fill_in "Period to", with: @due.period_to

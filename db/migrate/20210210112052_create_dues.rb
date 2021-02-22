@@ -9,7 +9,7 @@ class CreateDues < ActiveRecord::Migration[6.0]
       t.date :period_to
       t.float :amount
       t.float :paid_amount, :default => 0.0
-      t.date :paid_at
+      t.date :paid_on
       t.date :payment_date
       t.integer :user_id, index: true
 

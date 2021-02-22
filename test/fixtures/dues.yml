@@ -9,7 +9,7 @@ one:
   period_to: 2021-02-10
   amount: 1.5
   paid_amount: 1.5
-  paid_at: 2021-02-10
+  paid_on: 2021-02-10
   payment_date: 2021-02-10
 
 two:
@@ -21,5 +21,5 @@ two:
   period_to: 2021-02-10
   amount: 1.5
   paid_amount: 1.5
-  paid_at: 2021-02-10
+  paid_on: 2021-02-10
   payment_date: 2021-02-10
