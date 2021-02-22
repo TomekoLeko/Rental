@@ -6,7 +6,7 @@ class DuesController < ApplicationController
   # GET /dues
   # GET /dues.json
   def index
-    @dues = Due.all
+    @dues = current_user.dues
     @due_types = current_user.due_types
 
   end
@@ -19,7 +19,7 @@ class DuesController < ApplicationController
   # GET /dues/new
   def new
     @due = current_user.dues.build
-    @due_types = DueType.all
+    @due_types = current_user.due_types
     @properties = current_user.properties
     @tenants = current_user.tenants
   end
@@ -28,6 +28,8 @@ class DuesController < ApplicationController
   def edit
     @properties = current_user.properties
     @tenants = current_user.tenants
+    @due_types = current_user.due_types
+    @to_pay = @due.amount - @due.paid_amount
   end
 
   # POST /dues
@@ -48,6 +50,7 @@ class DuesController < ApplicationController
   # PATCH/PUT /dues/1
   # PATCH/PUT /dues/1.json
   def update
+    to_add = @due.paid_amount
     respond_to do |format|
       if @due.update(due_params)
         format.html { redirect_to @due, notice: 'Due was successfully updated.' }
@@ -56,6 +59,8 @@ class DuesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @due.errors, status: :unprocessable_entity }
       end
+      @due.paid_amount +=to_add
+      @due.save
     end
   end
 

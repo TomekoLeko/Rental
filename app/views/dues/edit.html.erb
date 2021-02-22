@@ -1,6 +1,9 @@
-<h1>Editing Due</h1>
+
+<h1>Pay the <%= @due_types.find_by_id(@due.due_type_id).name %> - <%= @due.amount %>$</h1>
+Property: <%= @properties.find_by_id(@due.property_id).address %>
+<!-- Bill data here -->
+
 
 <%= render 'form', due: @due %>
-
 <%= link_to 'Show', @due %> |
 <%= link_to 'Back', dues_path %>

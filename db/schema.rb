@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_153808) do
     t.date "period_from"
     t.date "period_to"
     t.float "amount"
-    t.float "paid_amount"
+    t.float "paid_amount", default: 0.0
     t.date "paid_at"
     t.date "payment_date"
     t.integer "user_id"
