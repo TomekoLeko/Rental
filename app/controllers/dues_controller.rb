@@ -7,7 +7,11 @@ class DuesController < ApplicationController
   # GET /dues.json
   def index
     @dues = current_user.dues
+    @tenant_dues = current_user.dues.select { |due| due.tenant_id != nil }
+    @bills = current_user.dues.select { |bill| bill.property_id != nil }
     @due_types = current_user.due_types
+    @tenants = current_user.tenants
+    @properties = current_user.properties
 
   end
 
