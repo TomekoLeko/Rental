@@ -11,7 +11,7 @@
     </div>
   <% end %>
   
-  <!-- Paying the bill -->
+  <!-- Paying a bill -->
   <% if params[:operation]== 'pay' %> 
  <div class="field">
   You've paid <%= @due.paid_amount %> 
@@ -32,33 +32,34 @@
   
   
  <% else %>
+
+ <!-- Creating a new due -->
  <div class="field form-group">
   <%= form.label :due_type_id %>
   <!-- <%= form.number_field :type_id %> -->
   <%= form.select( :due_type_id, @due_types.collect { |type| [type.name, type.id] }) %>
 </div>
-
 <!-- <div class="field">
   <%= form.label :rent_id %>
   <%= form.number_field :rent_id %>
 </div> -->
 
+ <!-- Only for bills to pay -->
 <% if params[:payer]== 'property' %>
 <div class="field form-group">
   <%= form.label :property_id %>
-  <!-- <%= form.number_field :property_id %> -->
   <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }) %>
 </div>
 <% end %> 
 
-
--
+ <!-- Only for dues to collect -->
 <% if params[:payer]== 'tenant' %>
 <div class="field form-group">
   <%= form.label :tenant_id %>
-  <%= form.number_field :tenant_id %>
+  <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] }) %>
 </div>
 <% end %> 
+
 <div class="field form-group">
   <%= form.label :period_from %>
   <%= form.date_select :period_from %>
@@ -86,8 +87,7 @@
 </div>
 
  
-  
-  
+
   <% end %>
 
 
