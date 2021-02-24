@@ -42,38 +42,34 @@ class DuesController < ApplicationController
     @properties = current_user.properties
     @tenants = current_user.tenants
     @rents = current_user.rents
-
-
     @due = current_user.dues.build(due_params)
-    if @due.property_id
     @tenant_due = current_user.dues.build(due_params)
-    id_to_assign = @rents.find_by(property_id: @tenant_due.property_id).tenant_id
-    @tenant_due.tenant_id = id_to_assign
-    @tenant_due.property_id = nil   
-    respond_to do |format|
-      if @due.save && @tenant_due.save
-        format.html { redirect_to @due, notice: 'Bill to pay and due to collect were successfully created.' }
-        format.json { render :show, status: :created, location: @due }
-      else
-        format.html { render :new }
-        format.json { render json: @due.errors, status: :unprocessable_entity }
+
+    if @due.property_id && @rents.find_by(property_id: @tenant_due.property_id)
+      id_to_assign = @rents.find_by(property_id: @tenant_due.property_id).tenant_id
+      @tenant_due.tenant_id = id_to_assign
+      @tenant_due.property_id = nil 
+      respond_to do |format|
+        if @due.save && @tenant_due.save
+            format.html { redirect_to @due, notice: 'Bill to pay and due to collect were successfully created.' }
+            format.json { render :show, status: :created, location: @due }
+        else
+            format.html { render :new }
+            format.json { render json: @due.errors, status: :unprocessable_entity }
+        end
       end
-    end
-  end
-
-  if @due.tenant_id
-    respond_to do |format|
-      if @due.save
-        format.html { redirect_to @due, notice: 'Due to collect was successfully created.' }
-        format.json { render :show, status: :created, location: @due }
-      else
-        format.html { render :new }
-        format.json { render json: @due.errors, status: :unprocessable_entity }
+    else  
+      respond_to do |format|
+        if  @due.save    
+            format.html { redirect_to @due, notice: 'Bill to pay was successfully created.' }
+            format.json { render :show, status: :created, location: @due }  
+        else
+            format.html { render :new }
+            format.json { render json: @due.errors, status: :unprocessable_entity }
+        end
       end
+
     end
-  end
-
-
   end
 
   # PATCH/PUT /dues/1
