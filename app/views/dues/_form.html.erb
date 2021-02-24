@@ -29,7 +29,25 @@
   <%= form.label :paid_on %>
   <%= form.date_select :paid_on %>
 </div> 
-  
+<!-- Collecting a due -->
+<% elsif params[:operation]== 'collect' %> 
+<div class="field">
+ You've collected <%= @due.paid_amount %> 
+ <br>
+ <%= @to_pay %> out of <%= @due.amount %> left to collect.
+ <!-- <%= form.label :paid_amount %>
+ <%= form.text_field :paid_amount %> -->
+ <br>
+  <%= form.label 'how much do you want to collect'%>
+ <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: '') %>
+
+</div>
+
+<div class="field">
+ <%= form.label :paid_on %>
+ <%= form.date_select :paid_on %>
+</div> 
+
   
  <% else %>
 

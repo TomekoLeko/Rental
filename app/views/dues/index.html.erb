@@ -85,7 +85,7 @@
         <td><%= due.payment_date %></td>
         <td><%= due.user_id %></td>
         <td><%= link_to 'Show', due %></td>
-        <td><%= link_to 'Pay', edit_due_path(due, :operation => 'pay') %></td>
+        <td><%= link_to 'Collect', edit_due_path(due, :operation => 'collect') %></td>
         <td><%= link_to 'Delete', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
