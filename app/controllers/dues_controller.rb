@@ -12,7 +12,17 @@ class DuesController < ApplicationController
     @due_types = current_user.due_types
     @tenants = current_user.tenants
     @properties = current_user.properties
-
+    @dues.each do |due|
+    days_left = due.payment_date - Date.today
+      if days_left < 0
+    due.status = 2
+    due.save
+      end
+      if (days_left < 4) && (days_left >=0)
+        due.status = 1
+        due.save
+      end
+    end
   end
 
   # GET /dues/1
