@@ -85,7 +85,11 @@ class DuesController < ApplicationController
         format.json { render json: @due.errors, status: :unprocessable_entity }
       end
       @due.paid_amount +=to_add
-      @due.save
+      left_to_pay = @due.amount - @due.paid_amount
+     if  left_to_pay <= 0
+      @due.status = 3
+    end
+    @due.save
     end
   end
 
