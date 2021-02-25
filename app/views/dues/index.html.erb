@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-
+<div class="title-and-add-button">
 <h1>Bills to pay</h1>
+<%= link_to '+', new_due_path(:payer => 'property'), class:"btn btn-success" %>
+</div>
 <table class="table table-striped table-bordered table-hover">
   <thead class="thead-dark">
     <tr>
-      <th>Type</th>
       <!-- <th>Rent</th> -->
       <th>Property</th>
+      <th>Type</th>
       <!-- <th>Tenant</th> -->
       <th>Period from</th>
       <th>Period to</th>
@@ -15,7 +17,6 @@
       <th>Paid amount</th>
       <th>Paid on</th>
       <th>Payment date</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,9 +25,9 @@
     <% @bills.each do |bill| %>
       <% if bill.user_id == current_user.id %>
       <tr>
-        <td><%= @due_types.find_by_id(bill.due_type_id).name %></td>
         <!-- <td><%= bill.rent_id %></td> -->
         <td><%= @properties.find_by_id(bill.property_id).address %></td>
+        <td><%= @due_types.find_by_id(bill.due_type_id).name %></td>
         <!-- <td><%= bill.tenant_id %></td> -->
         <td><%= bill.period_from %></td>
         <td><%= bill.period_to %></td>
@@ -34,10 +35,8 @@
         <td><%= bill.paid_amount %></td>
         <td><%= bill.paid_on %></td>
         <td><%= bill.payment_date %></td>
-        <td><%= bill.user_id %></td>
-        <td><%= link_to 'Show', bill %></td>
-        <td><%= link_to 'Pay', edit_due_path(bill, :operation => 'pay') %></td>
-        <td><%= link_to 'Delete', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pay', edit_due_path(bill, :operation => 'pay'), class:"btn btn-outline-success" %></td>
+        <td><%= link_to 'X', bill, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
       </tr>
       <% end %>
     <% end %>
@@ -46,25 +45,24 @@
 
 <br>
 
-<%= link_to 'New Due to pay', new_due_path(:payer => 'property'), class:"btn btn-secondary" %>
-<%= link_to 'Due types', due_types_path, class:"btn btn-secondary" %>
+<!-- <%= link_to 'Bill types', due_types_path, class:"btn btn-secondary" %> -->
 
+<div class="title-and-add-button">
 <h1>Dues to collect</h1>
+<%= link_to '+', new_due_path(:payer => 'tenant'), class:"btn btn-success" %>
+</div>
 
 <table class="table table-striped table-bordered table-hover">
   <thead class="thead-dark">
     <tr>
-      <th>Type</th>
-      <!-- <th>Rent</th> -->
-      <!-- <th>Property</th> -->
       <th>Tenant</th>
+      <th>Type</th>
       <th>Period from</th>
       <th>Period to</th>
       <th>Amount</th>
       <th>Paid amount</th>
       <th>Paid on</th>
       <th>Payment date</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -73,35 +71,28 @@
     <% @tenant_dues.each do |due| %>
       <% if due.user_id == current_user.id %>
       <tr>
-        <td><%= @due_types.find_by_id(due.due_type_id).name %></td>
         <!-- <td><%= due.rent_id %></td> -->
         <!-- <td><%= due.property_id %></td> -->
         <td><%= @tenants.find_by_id(due.tenant_id).name %></td>
+        <td><%= @due_types.find_by_id(due.due_type_id).name %></td>
         <td><%= due.period_from %></td>
         <td><%= due.period_to %></td>
         <td><%= due.amount %></td>
         <td><%= due.paid_amount %></td>
         <td><%= due.paid_on %></td>
         <td><%= due.payment_date %></td>
-        <td><%= due.user_id %></td>
-        <td><%= link_to 'Show', due %></td>
-        <td><%= link_to 'Collect', edit_due_path(due, :operation => 'collect') %></td>
-        <td><%= link_to 'Delete', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Collect', edit_due_path(due, :operation => 'collect'), class:"btn btn-outline-success" %></td>
+        <td><%= link_to 'X', due, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
       </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Due to collect', new_due_path(:payer => 'tenant'), class:"btn btn-secondary" %>
-<%= link_to 'Due types', due_types_path, class:"btn btn-secondary" %>
-
-<br>
 
 <!-- TEST TESET TEST -->
-<h1>All the dues objects- for testing</h1>
+<!-- <h1>All the dues objects- for testing</h1>
 
 <table class="table table-striped table-bordered table-hover">
   <thead class="thead-dark">
@@ -136,13 +127,12 @@
         <td><%= due.paid_on %></td>
         <td><%= due.payment_date %></td>
         <td><%= due.user_id %></td>
-        <td><%= link_to 'Show', due %></td>
         <td><%= link_to 'Pay', edit_due_path(due, :operation => 'pay') %></td>
-        <td><%= link_to 'Delete', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 

@@ -94,7 +94,7 @@ class DuesController < ApplicationController
   def destroy
     @due.destroy
     respond_to do |format|
-      format.html { redirect_to dues_url, notice: 'Due was successfully deleted.' }
+      format.html { redirect_to dues_url, notice: 'Due was successfully canceled.' }
       format.json { head :no_content }
     end
   end
