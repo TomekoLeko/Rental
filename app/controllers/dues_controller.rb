@@ -13,15 +13,23 @@ class DuesController < ApplicationController
     @tenants = current_user.tenants
     @properties = current_user.properties
     @dues.each do |due|
+
     days_left = due.payment_date - Date.today
+    left_to_pay = due.amount - due.paid_amount
+
+    if left_to_pay >0
       if days_left < 0
     due.status = 2
-    due.save
       end
       if (days_left < 4) && (days_left >=0)
         due.status = 1
-        due.save
       end
+    end
+    #   if  left_to_pay <= 0
+    #    due.status = 3
+    #  end
+    
+    due.save
     end
   end
 

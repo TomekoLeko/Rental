@@ -25,7 +25,7 @@
   <tbody>
     <% @bills.each do |bill| %>
       <% if bill.user_id == current_user.id %>
-      <tr>
+      <tr class="<%= bill.status.downcase %>">
         <!-- <td><%= bill.rent_id %></td> -->
         <td><%= @properties.find_by_id(bill.property_id).address %></td>
         <td><%= @due_types.find_by_id(bill.due_type_id).name %></td>
@@ -73,7 +73,7 @@
   <tbody>
     <% @tenant_dues.each do |due| %>
       <% if due.user_id == current_user.id %>
-      <tr>
+      <tr class="<%= due.status.downcase %>">
         <!-- <td><%= due.rent_id %></td> -->
         <!-- <td><%= due.property_id %></td> -->
         <td><%= @tenants.find_by_id(due.tenant_id).name %></td>
