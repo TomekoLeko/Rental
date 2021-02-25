@@ -17,6 +17,7 @@
       <th>Paid amount</th>
       <th>Paid on</th>
       <th>Payment date</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -35,6 +36,7 @@
         <td><%= bill.paid_amount %></td>
         <td><%= bill.paid_on %></td>
         <td><%= bill.payment_date %></td>
+        <td><%= bill.status %></td>
         <td><%= link_to 'Pay', edit_due_path(bill, :operation => 'pay'), class:"btn btn-outline-success" %></td>
         <td><%= link_to 'X', bill, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
       </tr>
@@ -63,6 +65,7 @@
       <th>Paid amount</th>
       <th>Paid on</th>
       <th>Payment date</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -81,6 +84,7 @@
         <td><%= due.paid_amount %></td>
         <td><%= due.paid_on %></td>
         <td><%= due.payment_date %></td>
+        <td><%= due.status %></td>
         <td><%= link_to 'Collect', edit_due_path(due, :operation => 'collect'), class:"btn btn-outline-success" %></td>
         <td><%= link_to 'X', due, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
       </tr>
