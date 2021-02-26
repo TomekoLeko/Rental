@@ -18,7 +18,7 @@ class AgreementsController < ApplicationController
 
   # GET /agreements/new
   def new
-    @agreements = current_user.agreements.build
+    @agreement = current_user.agreements.build
     @properties = current_user.properties.where(rented: false)
     @tenants = current_user.tenants.where(resident: false)
   end
