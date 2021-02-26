@@ -1,8 +1,12 @@
 <!-- <p id="notice" class="alert alert-warning alert-dismissible"><%= notice %></p> -->
 
+<div class="title-and-add-button">
 <h1>Properties</h1>
+<%= link_to '+', new_property_path, class:"btn btn-success" %>
 
-<table class="table table-striped table-bordered table-hover">
+</div>
+
+<table class="table table-bordered table-hover shadow">
   <thead class="thead-dark">
     <tr>
       <th>Address</th>
@@ -32,4 +36,3 @@
 
 <br>
 
-<%= link_to 'New Property', new_property_path, class:"btn btn-secondary" %>

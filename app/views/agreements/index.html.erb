@@ -1,8 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Agreements</h1>
 
-<table class="table table-striped table-bordered table-hover">
+
+<% if current_user.properties.where(rented: false).length > 0%>
+<div class="title-and-add-button">
+<h1>Agreements</h1>
+<%= link_to '+', new_agreement_path, class:"btn btn-success " %>
+</div>
+   <% else %>
+All your properties are rented.
+
+   <% end %>
+
+
+<table class="table table-bordered table-hover shadow">
   <thead class="thead-dark">
     <tr>
     <th>Property</th>
@@ -37,11 +48,6 @@
 </table>
 
 <br>
-<% if current_user.properties.where(rented: false).length > 0%>
-<%= link_to 'New Agreement', new_agreement_path, class:"btn btn-secondary" %>
-   <% else %>
-   You don't have any free properties.
 
-   <% end %>
   
 
