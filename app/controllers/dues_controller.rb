@@ -69,7 +69,7 @@ class DuesController < ApplicationController
       @tenant_due.property_id = nil 
       respond_to do |format|
         if @due.save && @tenant_due.save
-            format.html { redirect_to @due, notice: 'Bill to pay and due to collect were successfully created.' }
+            format.html { redirect_to dues_path, notice: 'Bill to pay and due to collect were successfully created.' }
             format.json { render :show, status: :created, location: @due }
         else
             format.html { render :new }
@@ -79,7 +79,7 @@ class DuesController < ApplicationController
     else  
       respond_to do |format|
         if  @due.save    
-            format.html { redirect_to @due, notice: 'Bill to pay was successfully created.' }
+            format.html { redirect_to dues_path, notice: 'Bill to pay was successfully created.' }
             format.json { render :show, status: :created, location: @due }  
         else
             format.html { render :new }
