@@ -2,7 +2,7 @@ class CreateDues < ActiveRecord::Migration[6.0]
   def change
     create_table :dues do |t|
       t.integer :due_type_id
-      t.integer :rent_id
+      t.integer :agreement_id
       t.integer :property_id
       t.integer :tenant_id
       t.date :period_from

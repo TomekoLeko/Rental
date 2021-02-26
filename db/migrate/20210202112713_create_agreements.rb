@@ -1,6 +1,6 @@
-class CreateRents < ActiveRecord::Migration[6.0]
+class CreateAgreements < ActiveRecord::Migration[6.0]
   def change
-    create_table :rents do |t|
+    create_table :agreements do |t|
       t.date :from
       t.date :to
       t.date :payment_date
@@ -12,8 +12,8 @@ class CreateRents < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :rents, :property_id
-    add_index :rents, :tenant_id
-    add_index :rents, :user_id
+    add_index :agreements, :property_id
+    add_index :agreements, :tenant_id
+    add_index :agreements, :user_id
   end
 end

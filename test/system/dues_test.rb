@@ -21,7 +21,7 @@ class DuesTest < ApplicationSystemTestCase
     fill_in "Period from", with: @due.period_from
     fill_in "Period to", with: @due.period_to
     fill_in "Property", with: @due.property_id
-    fill_in "Rent", with: @due.rent_id
+    fill_in "Agreement", with: @due.agreement_id
     fill_in "Tenant", with: @due.tenant_id
     fill_in "Type", with: @due.type_id
     click_on "Create Due"
@@ -41,7 +41,7 @@ class DuesTest < ApplicationSystemTestCase
     fill_in "Period from", with: @due.period_from
     fill_in "Period to", with: @due.period_to
     fill_in "Property", with: @due.property_id
-    fill_in "Rent", with: @due.rent_id
+    fill_in "Agreement", with: @due.agreement_id
     fill_in "Tenant", with: @due.tenant_id
     fill_in "Type", with: @due.type_id
     click_on "Update Due"

@@ -59,12 +59,12 @@ class DuesController < ApplicationController
   def create
     @properties = current_user.properties
     @tenants = current_user.tenants
-    @rents = current_user.rents
+    @agreements = current_user.agreements
     @due = current_user.dues.build(due_params)
     @tenant_due = current_user.dues.build(due_params)
 
-    if @due.property_id && @rents.find_by(property_id: @tenant_due.property_id)
-      id_to_assign = @rents.find_by(property_id: @tenant_due.property_id).tenant_id
+    if @due.property_id && @agreements.find_by(property_id: @tenant_due.property_id)
+      id_to_assign = @agreements.find_by(property_id: @tenant_due.property_id).tenant_id
       @tenant_due.tenant_id = id_to_assign
       @tenant_due.property_id = nil 
       respond_to do |format|
@@ -134,6 +134,6 @@ class DuesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def due_params
-      params.require(:due).permit(:due_type_id, :rent_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_on, :payment_date, :user_id, :status)
+      params.require(:due).permit(:due_type_id, :agreement_id, :property_id, :tenant_id, :period_from, :period_to, :amount, :paid_amount, :paid_on, :payment_date, :user_id, :status)
     end
 end

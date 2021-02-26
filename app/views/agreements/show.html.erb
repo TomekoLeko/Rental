@@ -2,38 +2,38 @@
 
 <p>
   <strong>From:</strong>
-  <%= @rent.from %>
+  <%= @agreement.from %>
 </p>
 
 <p>
   <strong>To:</strong>
-  <%= @rent.to %>
+  <%= @agreement.to %>
 </p>
 
 <p>
   <strong>Payment date:</strong>
-  <%= @rent.payment_date %>
+  <%= @agreement.payment_date %>
 </p>
 
 <p>
   <strong>Rent:</strong>
-  <%= @rent.rent %>
+  <%= @agreement.rent %>
 </p>
 
 <p>
   <strong>Deposit:</strong>
-  <%= @rent.deposit %>
+  <%= @agreement.deposit %>
 </p>
 
 <p>
   <strong>Property:</strong>
-  <%= @rent.property_id %>
+  <%= @agreement.property_id %>
 </p>
 
 <p>
   <strong>Tenant:</strong>
-  <%= @rent.tenant_id %>
+  <%= @agreement.tenant_id %>
 </p>
 
-<%= link_to 'Edit', edit_rent_path(@rent) %> |
-<%= link_to 'Back', rents_path %>
+<%= link_to 'Edit', edit_agreement_path(@agreement) %> |
+<%= link_to 'Back', agreements_path %>

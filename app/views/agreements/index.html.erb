@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Agreements</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+    <th>Property</th>
+    <th>Tenant</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Payment date</th>
+      <th>Agreement</th>
+      <th>Deposit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @agreements.each do |agreement| %>
+      <% if agreement.user_id == current_user.id %>
+      <tr>
+      <td><%= @properties.find_by_id(agreement.property_id).address %></td>
+      <td><%= @tenants.find_by_id(agreement.tenant_id).name %></td>
+        <td><%= agreement.from %></td>
+        <td><%= agreement.to %></td>
+        <td><%= agreement.payment_date %></td>
+        <td><%= agreement.rent %></td>
+        <td><%= agreement.deposit %></td>
+        <td><%= link_to 'Show', agreement %></td>
+        <td><%= link_to 'Edit', edit_agreement_path(agreement) %></td>
+        <td><%= link_to 'Destroy', agreement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user.properties.where(rented: false).length > 0%>
+<%= link_to 'New Agreement', new_agreement_path, class:"btn btn-secondary" %>
+   <% else %>
+   You don't have any free properties.
+
+   <% end %>
+  
+

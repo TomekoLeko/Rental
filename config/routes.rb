@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :due_types
   resources :dues
-  resources :rents
+  resources :agreements
   resources :tenants
   devise_for :users
   resources :properties

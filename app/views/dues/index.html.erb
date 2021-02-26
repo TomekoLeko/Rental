@@ -7,7 +7,7 @@
 <table class="table table-bordered table-hover shadow">
   <thead>
     <tr>
-      <!-- <th>Rent</th> -->
+      <!-- <th>Agreement</th> -->
       <th>Property</th>
       <th>Type</th>
       <!-- <th>Tenant</th> -->
@@ -26,7 +26,7 @@
     <% @bills.each do |bill| %>
       <% if bill.user_id == current_user.id %>
       <tr class="<%= bill.status.downcase %>">
-        <!-- <td><%= bill.rent_id %></td> -->
+        <!-- <td><%= bill.agreement_id %></td> -->
         <td><%= @properties.find_by_id(bill.property_id).address %></td>
         <td><%= @due_types.find_by_id(bill.due_type_id).name %></td>
         <!-- <td><%= bill.tenant_id %></td> -->
@@ -74,7 +74,7 @@
     <% @tenant_dues.each do |due| %>
       <% if due.user_id == current_user.id %>
       <tr class="<%= due.status.downcase %>">
-        <!-- <td><%= due.rent_id %></td> -->
+        <!-- <td><%= due.agreement_id %></td> -->
         <!-- <td><%= due.property_id %></td> -->
         <td><%= @tenants.find_by_id(due.tenant_id).name %></td>
         <td><%= @due_types.find_by_id(due.due_type_id).name %></td>
@@ -121,7 +121,7 @@
       <% if due.user_id == current_user.id %>
       <tr>
         <td><%= @due_types.find_by_id(due.due_type_id).name %></td>
-        <td><%= due.rent_id %></td>
+        <td><%= due.agreement_id %></td>
         <td><%= due.property_id %></td>
         <td><%= due.tenant_id %></td>
         <td><%= due.period_from %></td>

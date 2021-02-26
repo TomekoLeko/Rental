@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :properties
          has_many :tenants
-         has_many :rents
+         has_many :agreements
          has_many :due_types
          has_many :dues
-         has_many :rents
+         has_many :agreements
 end

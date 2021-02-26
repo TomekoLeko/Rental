@@ -12,6 +12,22 @@
 
 ActiveRecord::Schema.define(version: 2021_02_25_105921) do
 
+  create_table "agreements", force: :cascade do |t|
+    t.date "from"
+    t.date "to"
+    t.date "payment_date"
+    t.float "rent"
+    t.float "deposit"
+    t.integer "property_id"
+    t.integer "tenant_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_agreements_on_property_id"
+    t.index ["tenant_id"], name: "index_agreements_on_tenant_id"
+    t.index ["user_id"], name: "index_agreements_on_user_id"
+  end
+
   create_table "due_types", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
@@ -22,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_105921) do
 
   create_table "dues", force: :cascade do |t|
     t.integer "due_type_id"
-    t.integer "rent_id"
+    t.integer "agreement_id"
     t.integer "property_id"
     t.integer "tenant_id"
     t.date "period_from"
@@ -47,22 +63,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_105921) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_properties_on_user_id"
-  end
-
-  create_table "rents", force: :cascade do |t|
-    t.date "from"
-    t.date "to"
-    t.date "payment_date"
-    t.float "rent"
-    t.float "deposit"
-    t.integer "property_id"
-    t.integer "tenant_id"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["property_id"], name: "index_rents_on_property_id"
-    t.index ["tenant_id"], name: "index_rents_on_tenant_id"
-    t.index ["user_id"], name: "index_rents_on_user_id"
   end
 
   create_table "tenants", force: :cascade do |t|
