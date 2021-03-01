@@ -31,7 +31,7 @@ class DueTypesController < ApplicationController
 
     respond_to do |format|
       if @due_type.save
-        format.html { redirect_to @due_type, notice: 'Due type was successfully created.' }
+        format.html { redirect_to due_types_path, notice: 'Due type was successfully created.' }
         format.json { render :show, status: :created, location: @due_type }
       else
         format.html { render :new }

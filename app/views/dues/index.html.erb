@@ -1,9 +1,16 @@
 
 
 <div class="title-and-add-button">
-<h1>Bills to pay</h1>
-<%= link_to '+', new_due_path(:payer => 'property'), class:"btn btn-success " %>
+  <div class="left d-flex">
+    <div class="table-title">Bills to pay</div>
+    <div class="mt-auto mb-auto"><%= link_to '+', new_due_path(:payer => 'property'), class:"btn btn-success " %> </div>
+  </div>
+    <div class="right">
+    <%= link_to 'Edit due types', due_types_path, class:"btn-sm btn-success " %>
+  </div>
 </div>
+
+
 <table class="table table-bordered table-hover shadow">
   <thead>
     <tr>
@@ -48,11 +55,16 @@
 <br>
 
 <!-- <%= link_to 'Bill types', due_types_path, class:"btn btn-secondary" %> -->
-
 <div class="title-and-add-button">
-<h1>Dues to collect</h1>
-<%= link_to '+', new_due_path(:payer => 'tenant'), class:"btn btn-success" %>
+  <div class="left d-flex">
+    <div class="table-title">Dues to collect</div>
+    <div class="mt-auto mb-auto"><%= link_to '+', new_due_path(:payer => 'tenant'), class:"btn btn-success " %> </div>
+  </div>
+    <div class="right">
+    <%= link_to 'Edit due types', due_types_path, class:"btn-sm btn-success " %>
+  </div>
 </div>
+
 
 <table class="table table-bordered table-hover shadow">
   <thead>

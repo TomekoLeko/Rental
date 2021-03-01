@@ -18,19 +18,35 @@
      background-color: ghostwhite
  }
 
+ .btn-sm {
+text-decoration:none;
+ }
+
  thead {
     background-color:  #f0f0f6;
  }
 
-
  .title-and-add-button {
-     display: flex;
+     width:100%;
+    height: 3em;
+    display: flex;
+     position: relative;
      align-items: center;
-     h1 {
-        display: inline;
-        margin-right: 1vw;
+     .table-title {
+       font-size: 2em;
+       margin-right: 0.5em;
+    }
+    .left {
+        position:absolute;
+        left:0;
+    }
+    .right {
+        position:absolute;
+        right:0;
+      
     }
 }
+
 
 .delayed {
     color: firebrick;
