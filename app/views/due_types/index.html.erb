@@ -16,7 +16,6 @@
       <% if due_type.user_id == current_user.id %>
       <tr>
         <td><%= due_type.name %></td>
-      
         <td><%= link_to 'Edit', edit_due_type_path(due_type), class:"btn btn-outline-secondary"  %></td>
         <td><%= link_to 'X', due_type, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %>
         

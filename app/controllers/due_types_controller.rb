@@ -27,10 +27,13 @@ class DueTypesController < ApplicationController
   # POST /due_types.json
   def create
     # @due_type = DueType.new(due_type_params)
+    @due_types = current_user.due_types
     @due_type = current_user.due_types.build(due_type_params)
-
     respond_to do |format|
-      if @due_type.save
+      if @due_types.find_by(name: @due_type.name) 
+        format.html { redirect_to due_types_path, alert: 'This due type already exists.' }
+        format.json { render json: @due_type.errors, status: :unprocessable_entity }
+      elsif  @due_type.save
         format.html { redirect_to due_types_path, notice: 'Due type was successfully created.' }
         format.json { render :show, status: :created, location: @due_type }
       else
