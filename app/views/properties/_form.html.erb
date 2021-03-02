@@ -29,19 +29,12 @@
   </br>
   </div>
 
-  <div class="field form-group"">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :property_user_id, value: current_user.id, class:"form-control", type: :hidden %>
-  </br>
-  </div>
-  
-
   <!-- <div class="field form-group"">
     <%= form.label :rented %>
     <%= form.check_box :rented, class:"form-control" %>
   </div> -->
 
   <div class="actions">
-    <%= form.submit class:"btn btn-success" %>
+    <%= form.submit class:"btn btn-success btn-bottom-margin" %>
   </div>
 <% end %>

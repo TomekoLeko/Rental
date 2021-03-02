@@ -48,7 +48,7 @@ class DueTypesController < ApplicationController
   def update
     respond_to do |format|
       if @due_type.update(due_type_params)
-        format.html { redirect_to @due_type, notice: 'Due type was successfully updated.' }
+        format.html { redirect_to due_types_path, notice: 'Due type was successfully updated.' }
         format.json { render :show, status: :ok, location: @due_type }
       else
         format.html { render :edit }

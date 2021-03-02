@@ -14,16 +14,27 @@
  *= require_self
  */
 
+
+/* Modify the backgorund color */ 
+.navbar-custom { 
+	background-color: #f9fcff;
+    margin-bottom: 2em;
+} 
+
  tr:nth-child(even) {
-     background-color: ghostwhite
+     background-color: #f9fcff;
  }
 
  .btn-sm {
 text-decoration:none;
  }
 
+ .btn-bottom-margin {
+     margin-bottom: 1em;
+ }
+
  thead {
-    background-color:  #f0f0f6;
+    background-color:  #f4f8fa;
  }
 
  .title-and-add-button {
@@ -47,7 +58,6 @@ text-decoration:none;
     }
 }
 
-
 .delayed {
     color: firebrick;
 }
@@ -56,6 +66,13 @@ text-decoration:none;
 }
 .paid {
     color: grey;
+}
+
+.my-jumbotron {
+    padding: 2rem 1rem;
+margin-bottom: 2rem;
+background-color: #f9fcff;
+border-radius: .3rem;
 }
 
 
