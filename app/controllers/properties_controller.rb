@@ -32,7 +32,7 @@ class PropertiesController < ApplicationController
     @property = current_user.properties.build(property_params)
     respond_to do |format|
       if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
+        format.html { redirect_to properties_path, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
