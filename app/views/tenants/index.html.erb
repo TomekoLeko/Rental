@@ -14,7 +14,8 @@
       <th>Name</th>
       <th>Phone</th>
       <th>Resident</th>
-      <th colspan="3"></th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
@@ -26,9 +27,16 @@
         <td><%= tenant.name %></td>
         <td><%= tenant.phone %></td>
         <td><% if tenant.resident %>Yes<% else %>No<% end %></td>
-        <td><%= link_to 'Show', tenant %></td>
-        <td><%= link_to 'Edit', edit_tenant_path(tenant) %></td>
-        <td><%= link_to 'Delete', tenant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <%= link_to edit_tenant_path(tenant), class:"btn btn-outline-secondary" do %>
+          <i class='far fa-edit'> </i>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to tenant, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" do %>
+          <i class='fas fa-trash'> </i>
+        <% end %> 
+        </td>
       </tr>
       <% end %>
     <% end %>
