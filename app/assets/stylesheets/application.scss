@@ -12,10 +12,19 @@
  *
  *= require_tree .
  *= require_self
+ /*
  */
+ 
 
 
 /* Modify the backgorund color */ 
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+table {
+    margin-top:1.5em;
+}
 .navbar-custom { 
 	background-color: #f9fcff;
     margin-bottom: 2em;
