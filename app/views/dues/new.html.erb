@@ -1,3 +1,4 @@
+<div class="my-jumbotron shadow-sm">
 <h1>New Due
 <% if params[:payer]== 'property' %> to pay <% end %>
 <% if params[:payer]== 'tenant' %>to collect  <% end %>
@@ -6,3 +7,4 @@
 <%= render 'form', due: @due %>
 <br>
 <%= link_to 'Cancel', dues_path, class:"btn btn-secondary" %>
+</div>

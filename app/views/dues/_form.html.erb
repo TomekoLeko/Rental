@@ -25,9 +25,12 @@
 
 </div>
 
+
+
 <div class="field">
   <%= form.label :paid_on %>
   <%= form.date_select :paid_on %>
+  
 </div> 
 <!-- Collecting a due -->
 <% elsif params[:operation]== 'collect' %> 
@@ -50,32 +53,29 @@
 
   
  <% else %>
-
+<div class="row"
  <!-- Creating a new due -->
- <div class="field form-group">
+ <div class="field form-group col-3">
   <%= form.label :due_type_id %>
-  <!-- <%= form.number_field :type_id %> -->
-  <%= form.select( :due_type_id, @due_types.collect { |type| [type.name, type.id] }) %>
+  <%= form.select( :due_type_id, @due_types.collect { |type| [type.name, type.id] }, {}, {class: "form-select"}) %>
 </div>
-<!-- <div class="field">
-  <%= form.label :agreement_id %>
-  <%= form.number_field :agreement_id %>
-</div> -->
 
  <!-- Only for bills to pay -->
 <% if params[:payer]== 'property' %>
-<div class="field form-group">
+<div class="field form-group col-3">
   <%= form.label :property_id %>
-  <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }) %>
+  <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }, {}, {class: "form-select"}) %>
+</div>
 </div>
 <% end %> 
 
  <!-- Only for dues to collect -->
 <% if params[:payer]== 'tenant' %>
-<div class="field form-group">
+<div class="field form-group col-6">
   <%= form.label :tenant_id %>
   <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] }) %>
 </div>
+
 <% end %> 
 
 <div class="field form-group">
@@ -88,9 +88,9 @@
   <%= form.date_select :period_to %>
 </div>
 
-<div class="field form-group">
+<div class="field form-group col-1">
   <%= form.label :amount %>
-  <%= form.text_field :amount, :required => 'required' %>
+  <%= form.text_field :amount, :required => 'required', class:"form-control" %>
 </div>
 
 
