@@ -13,16 +13,18 @@
   
   <!-- Paying a bill -->
   <% if params[:operation]== 'pay' %> 
- <div class="field">
+ <div>
   You've paid <%= @due.paid_amount %> 
   <br>
   <%= @to_pay %> out of <%= @due.amount %> left to pay.
   <!-- <%= form.label :paid_amount %>
   <%= form.text_field :paid_amount %> -->
   <br>
-   <%= form.label 'how much do you want to pay'%>
-  <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: '') %>
-
+  How much do you want to pay?
+ <div class="field form-group col-1 ">
+   <!-- <%= form.label 'how much do you want to pay'%> -->
+  <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: ''), class:"form-control" %>
+ </div>
 </div>
 
 
@@ -113,6 +115,6 @@
 
 
   <div class="actions">
-    <%= form.submit class:"btn btn-success" %>
+    <%= form.submit class:"btn btn-success btn-bottom-margin" %>
   </div>
 <% end %>

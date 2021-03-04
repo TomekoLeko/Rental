@@ -1,4 +1,4 @@
-
+<div class="my-jumbotron shadow-sm">
 <h1>Pay the <%= @due_types.find_by_id(@due.due_type_id).name %> - <%= @due.amount %>$</h1>
 <% if params[:operation]== 'pay' %> 
 Property: <%= @properties.find_by_id(@due.property_id).address %>
@@ -9,5 +9,5 @@ Tenant: <%= @tenants.find_by_id(@due.tenant_id).name %>
 
 
 <%= render 'form', due: @due %>
-<%= link_to 'Show', @due %> |
-<%= link_to 'Back', dues_path %>
+<%= link_to 'Back', dues_path, class:'btn btn-secondary' %>
+</div>
