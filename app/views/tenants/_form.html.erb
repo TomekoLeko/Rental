@@ -11,25 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group col-3">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group col-3">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group col-3">
     <%= form.label :phone %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone, class:"form-control" %>
   </div>
-  <div class="field">
-  <%= form.number_field :user_id, id: :tenant_user_id, value:current_user.id, type:'hidden' %>
+  <div class="field form-group">
+  <%= form.number_field :user_id, id: :tenant_user_id, value:current_user.id, type:'hidden', class:"form-control" %>
 </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success btn-bottom-margin btn-top-margin" %>
   </div>
 <% end %>
