@@ -52,6 +52,7 @@ class DuesController < ApplicationController
     @tenants = current_user.tenants
     @due_types = current_user.due_types
     @to_pay = @due.amount - @due.paid_amount
+    @today = Date.today
   end
 
   # POST /dues
@@ -96,7 +97,7 @@ class DuesController < ApplicationController
     to_add = @due.paid_amount
     respond_to do |format|
       if @due.update(due_params)
-        format.html { redirect_to @due, notice: 'Due was successfully updated.' }
+        format.html { redirect_to dues_path, notice: 'Due was successfully updated.' }
         format.json { render :show, status: :ok, location: @due }
       else
         format.html { render :edit }

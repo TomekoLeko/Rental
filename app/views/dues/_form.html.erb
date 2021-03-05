@@ -14,53 +14,43 @@
   <!-- Paying a bill -->
   <% if params[:operation]== 'pay' %> 
  <div>
-  You've paid <%= @due.paid_amount %> 
-  <br>
-  <%= @to_pay %> out of <%= @due.amount %> left to pay.
-  <!-- <%= form.label :paid_amount %>
-  <%= form.text_field :paid_amount %> -->
-  <br>
-  How much do you want to pay?
- <div class="field form-group col-1 ">
-   <!-- <%= form.label 'how much do you want to pay'%> -->
-  <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: ''), class:"form-control" %>
- </div>
+    You've paid <%= @due.paid_amount %> 
+    <br>
+    <%= @to_pay %> out of <%= @due.amount %> left to pay.
+    <br>
+    How much do you want to pay?
+  <div class="field form-group col-1 ">
+    <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: ''), class:"form-control" %>
+  </div>
 </div>
-
-
-
-<div class="field">
+<div class="field form-group col-3">
   <%= form.label :paid_on %>
-  <%= form.date_select :paid_on %>
-  
+  <%= form.date_field :paid_on, value: @today, class: "form-control"%>
 </div> 
+
 <!-- Collecting a due -->
 <% elsif params[:operation]== 'collect' %> 
 <div class="field">
- You've collected <%= @due.paid_amount %> 
- <br>
- <%= @to_pay %> out of <%= @due.amount %> left to collect.
- <!-- <%= form.label :paid_amount %>
- <%= form.text_field :paid_amount %> -->
- <br>
-  <%= form.label 'how much do you want to collect'%>
- <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: '') %>
-
+  You've collected <%= @due.paid_amount %> 
+  <br>
+  <%= @to_pay %> out of <%= @due.amount %> left to collect.
+  <br>
+    <%= form.label 'how much do you want to collect'%>
+  <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: '') %>
 </div>
-
 <div class="field">
- <%= form.label :paid_on %>
- <%= form.date_select :paid_on %>
+  <%= form.label :paid_on %>
+  <%= form.date_select :paid_on %>
 </div> 
 
-  
  <% else %>
-<div class="row"
+<div class="row">
  <!-- Creating a new due -->
  <div class="field form-group col-3">
   <%= form.label :due_type_id %>
   <%= form.select( :due_type_id, @due_types.collect { |type| [type.name, type.id] }, {}, {class: "form-select"}) %>
 </div>
+<% end %>
 
  <!-- Only for bills to pay -->
 <% if params[:payer]== 'property' %>
@@ -73,48 +63,41 @@
 
  <!-- Only for dues to collect -->
 <% if params[:payer]== 'tenant' %>
-<div class="field form-group col-6">
+<div class="field form-group col-3">
   <%= form.label :tenant_id %>
-  <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] }) %>
+  <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] }, {}, {class: "form-select"}) %>
 </div>
-
+</div>
 <% end %> 
 
-<div class="field form-group">
-  <%= form.label :period_from %>
-  <%= form.date_select :period_from %>
+<div class="row">
+  <div class="field form-group col-3">
+    <%= form.label :period_from %>
+    <%= form.date_field :period_from, class: "form-control"%>
+  </div>
+  <div class="field form-group col-3">
+    <%= form.label :period_to %>
+    <%= form.date_field :period_to, class: "form-control"%>
+  </div>
 </div>
-
-<div class="field form-group">
-  <%= form.label :period_to %>
-  <%= form.date_select :period_to %>
-</div>
-
-<div class="field form-group col-1">
-  <%= form.label :amount %>
-  <%= form.text_field :amount, :required => 'required', class:"form-control" %>
-</div>
-
-
-<div class="field form-group">
-  <%= form.label :payment_date %>
-  <%= form.date_select :payment_date %>
+<div class="row">
+  <div class="field form-group col-1">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, :required => 'required', class:"form-control" %>
+  </div>
+  <div class="field form-group col-3">
+    <%= form.label :payment_date %>
+    <%= form.date_field :payment_date, class:"form-control" %>
+  </div>
 </div>
 
 <div class="field form-group"">
 <%= form.number_field :user_id, id: :due_user_id, value: current_user.id, class:"form-control", type: :hidden %>
-</br>
 </div>
-
- 
-
-  <% end %>
-
-
 
 
 
   <div class="actions">
-    <%= form.submit class:"btn btn-success btn-bottom-margin" %>
+    <%= form.submit class:"btn btn-success btn-bottom-margin btn-top-margin" %>
   </div>
 <% end %>
