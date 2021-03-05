@@ -95,9 +95,20 @@
 <%= form.number_field :user_id, id: :due_user_id, value: current_user.id, class:"form-control", type: :hidden %>
 </div>
 
-
-
+<% if params[:payer]== 'property' %>
+<div class="actions">
+  <%= form.submit "Create a bill to pay", class:"btn btn-success btn-bottom-margin btn-top-margin" %>
+</div>
+<% elsif params[:payer]== 'tenant' %>
+<%= form.submit "Create a due to collect", class:"btn btn-success btn-bottom-margin btn-top-margin" %>
+<% elsif params[:operation]== 'pay' %>
+<%= form.submit "Pay the bill", class:"btn btn-success btn-bottom-margin btn-top-margin" %>
+<% elsif params[:operation]== 'collect' %>
+<%= form.submit "Collect the due", class:"btn btn-success btn-bottom-margin btn-top-margin" %>
+<% else %>
   <div class="actions">
     <%= form.submit class:"btn btn-success btn-bottom-margin btn-top-margin" %>
   </div>
+<% end %>
+
 <% end %>
