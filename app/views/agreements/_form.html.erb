@@ -13,7 +13,7 @@
 <div class="row">
   <div class="field form-group col-3">
     <% if @properties.empty? %>
-    You don't have any available properties!
+     <span class="alert-empty"> You don't have any available properties! </span>
     <% else %>
     <%= form.label :property_id %>
   <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }, {}, {class: "form-select"}) %>
@@ -22,7 +22,7 @@
 
   <div class="field form-group col-3">
     <% if @tenants.empty? %>
-    You don't have any tenants to assign!
+    <span class="alert-empty">You don't have any tenants to assign!</span>
     <% else %>
     <%= form.label :tenant_id %>
     <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] }, {}, {class: "form-select"} ) %>
@@ -66,7 +66,9 @@
 </br>
 </div>
 
+<% if !@properties.empty? && !@tenants.empty? && %>
   <div class="actions">
     <%= form.submit class:"btn btn-success btn-bottom-margin btn-top-margin" %>
   </div>
+  <% end %>
 <% end %>
