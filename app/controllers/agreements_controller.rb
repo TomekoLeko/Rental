@@ -40,7 +40,7 @@ class AgreementsController < ApplicationController
     tenant.update_attribute(:resident, true)
     respond_to do |format|
       if @agreement.save
-        format.html { redirect_to @agreement, notice: 'Agreement was successfully created.' }
+        format.html { redirect_to agreements_path, notice: 'Agreement was successfully created.' }
         format.json { render :show, status: :created, location: @agreement }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class AgreementsController < ApplicationController
     tenant.update_attribute(:resident, true)
     respond_to do |format|
       if @agreement.update(agreement_params)
-        format.html { redirect_to @agreement, notice: 'Agreement was successfully updated.' }
+        format.html { redirect_to agreements_path, notice: 'Agreement was successfully updated.' }
         format.json { render :show, status: :ok, location: @agreement }
       else
         format.html { render :edit }

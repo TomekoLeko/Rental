@@ -10,50 +10,55 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field form-group">
-    <%= form.label :from %>
-    <%= form.date_select :from, class:"form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :to %>
-    <%= form.date_select :to, class:"form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :payment_date %>
-    <%= form.date_select :payment_date, class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rent %>
-    <%= form.text_field :rent, class:"form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :deposit %>
-    <%= form.text_field :deposit, class:"form-control" %>
-  </div>
-
-  <div class="field form-group">
+<div class="row">
+  <div class="field form-group col-3">
     <% if @properties.empty? %>
     You don't have any available properties!
     <% else %>
     <%= form.label :property_id %>
-  <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }) %>
+  <%= form.select( :property_id, @properties.collect { |property| [property.address, property.id] }, {}, {class: "form-select"}) %>
 <% end %>
   </div>
 
-  <div class="field form-group">
-
-
+  <div class="field form-group col-3">
     <% if @tenants.empty? %>
     You don't have any tenants to assign!
     <% else %>
     <%= form.label :tenant_id %>
-    <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] } ) %>
+    <%= form.select( :tenant_id, @tenants.collect { |tenant| [tenant.name, tenant.id] }, {}, {class: "form-select"} ) %>
 <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="field form-group col-2">
+    <%= form.label :from %>
+    <%= form.date_field :from, :required => 'required', class:"form-control" %>
+  </div>
+  <div class="field form-group col-2">
+    <%= form.label :to %>
+    <%= form.date_field :to, :required => 'required', class:"form-control" %>
+  </div>
+</div>
+
+
+
+  <div class="row">
+  <div class="field form-group col-1">
+    <%= form.label :rent %>
+    <%= form.text_field :rent, :required => 'required', class:"form-control" %>
+  </div>
+
+  <div class="field form-group col-3">
+    <%= form.label :payment_date %>
+    <%= form.date_field :payment_date, :required => 'required', class:"form-control" %>
+  </div>
+
+  </div>
+
+  <div class="field form-group col-1">
+    <%= form.label :deposit %>
+    <%= form.text_field :deposit, :required => 'required', class:"form-control" %>
   </div>
 
   <div class="field form-group"">
@@ -62,6 +67,6 @@
 </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success btn-bottom-margin btn-top-margin" %>
   </div>
 <% end %>
