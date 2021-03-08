@@ -30,7 +30,7 @@
 
 <!-- Collecting a due -->
 <% elsif params[:operation]== 'collect' %> 
-<div class="field">
+<div class="field form-group col-3"">
   You've collected <%= @due.paid_amount %> 
   <br>
   <%= @to_pay %> out of <%= @due.amount %> left to collect.
@@ -38,9 +38,9 @@
     <%= form.label 'how much do you want to collect'%>
   <%= form.number_field :paid_amount, value: number_to_currency(@to_pay, delimiter: '', unit: '') %>
 </div>
-<div class="field">
+<div class="field form-group col-3">
   <%= form.label :paid_on %>
-  <%= form.date_select :paid_on %>
+  <%= form.date_field :paid_on, value: @today, class: "form-control" %>
 </div> 
 
  <% else %>
@@ -70,6 +70,8 @@
 </div>
 <% end %> 
 
+
+<% if params[:payer] %>
 <div class="row">
   <div class="field form-group col-3">
     <%= form.label :period_from %>
@@ -90,6 +92,7 @@
     <%= form.date_field :payment_date, :required => 'required', class:"form-control" %>
   </div>
 </div>
+<% end %>
 
 <div class="field form-group"">
 <%= form.number_field :user_id, id: :due_user_id, value: current_user.id, class:"form-control", type: :hidden %>

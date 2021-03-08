@@ -1,5 +1,6 @@
 <div class="my-jumbotron shadow-sm">
-<h1>Pay the <%= @due_types.find_by_id(@due.due_type_id).name %> - <%= @due.amount %>$</h1>
+
+<h1><%= params[:operation].humanize %>  the <%= @due_types.find_by_id(@due.due_type_id).name %> - <%= @due.amount %>$</h1>
 <% if params[:operation]== 'pay' %> 
 Property: <%= @properties.find_by_id(@due.property_id).address %>
 <% elsif params[:operation]== 'collect' %> 
